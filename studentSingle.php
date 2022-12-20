@@ -17,19 +17,8 @@ $result = $conn->query($sql);
 $conn = null;
 
 ?>
-<div class="card m-4">
+<div class="container card m-1">
 
-    <!-- <table class="table"> -->
-    <!-- <thead class="table-dark">
-            <th scope="col">SID</th>
-            <th scope="col">Photo</th>
-            <th scope="col">Name</th>
-            <th scope="col">Phone</th>
-            <th scope="col">Father Name</th>
-            <th scope="col">Mother Name</th>
-            <th scope="col">Address</th>
-            <th scope="col">button</th>
-        </thead> -->
     <?php foreach ($result as $row) {
         // $sid = $row['S_id'];
         $sid = $row['S_Id'];
@@ -45,26 +34,40 @@ $conn = null;
         $photo = $row['Photo'];
     ?>
 
+        <div class="row m-2">
+            <div class="col-4 "><img src="<?php echo 'http://127.0.0.1:2525/idcard_project'  . '/image/std/' . $photo; ?>" class="img-thumbnail rounded float-left m-2" width="200px" alt="srd pic"></div>
+            <div class="card-body col-8 p-3">
+                <div>
+                    <h5 class="card-title">Name : <?php echo  $name; ?></h5>
+                    <p class="card-text">Address: <?php echo $address; ?>.</p>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">SID: <?php echo $sid; ?></li>
+                        <li class="list-group-item">Phone: <?php echo $phone; ?> </li>
+                        <li class="list-group-item">
+                            <div class="d-flex ">
+                                <ul class="list-group m-2 p-1">
+                                    <dt> Father: <?php echo $Fname; ?></dt>
+                                    <dd> Work: <?php echo $Fwork; ?>
+                                        </br>Phone: <?php echo $Fphone; ?></dd>
+                                </ul>
+                                <ul class="list-group m-2 p-1">
+                                    <dt> Mother: <?php echo $Mname; ?></dt>
+                                    <dd> Work: <?php echo $Mwork; ?>
+                                        </br>Phone: <?php echo $Mphone; ?></dd>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <a class="btn btn-secondary" href="/idcard_project/index.php/<?php echo $sid; ?>" role="button">Back</a></td>
+                    <a class="btn btn-secondary" href="/idcard_project/addStudent.php/<?php echo $sid; ?>" role="button">Edit</a></td>
+                </div>
+            </div>
+        <?php } ?>
 
-
-        <img src="<?php echo $photo; ?>" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Name :<?php echo  $name; ?></h5>
-            <p class="card-text">Address: <?php echo $address; ?>.</p>
         </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">SID: <?php echo $sid; ?></li>
-            <li class="list-group-item">Phone: <?php echo $phone; ?> </li>
-            <li class="list-group-item"><?php echo $Fname; ?></br><?php echo $Mname; ?></li>
-        </ul>
-        <div class="card-body">
-            <a class="btn btn-secondary" href="/idcard_project/index.php/<?php echo $sid; ?>" role="button">Back</a></td>
-            <a class="btn btn-secondary" href="/idcard_project/addStudent.php/<?php echo $sid; ?>" role="button">Edit</a></td>
-        </div>
-    <?php } ?>
-
-
-    <!-- </table> -->
+        <!-- </table> -->
 
 </div>
 
